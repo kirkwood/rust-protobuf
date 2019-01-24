@@ -150,7 +150,7 @@ impl<'a> EnumGen<'a> {
             );
         }
         w.derive(&derive);
-        serde::write_serde_attr(w, &self.customize, "derive(Serialize, Deserialize)");
+        serde::write_serde_attr(w, &self.customize, "derive(Serialize, Deserialize, SerdeValue)");
         let ref type_name = self.type_name;
         w.expr_block(&format!("pub enum {}", type_name), |w| {
             for value in self.values_all() {

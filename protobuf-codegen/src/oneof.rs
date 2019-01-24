@@ -158,7 +158,7 @@ impl<'a> OneofGen<'a> {
             derive.push("Debug");
         }
         w.derive(&derive);
-        serde::write_serde_attr(w, &self.customize, "derive(Serialize, Deserialize)");
+        serde::write_serde_attr(w, &self.customize, "derive(Serialize, Deserialize, SerdeValue)");
         w.pub_enum(&self.type_name.to_string(), |w| {
             for variant in self.variants_except_group() {
                 w.write_line(&format!(
